@@ -43,16 +43,16 @@ export class TableRow extends React.PureComponent<Partial<TableBodyProps>> {
 
         return (
             <View
+            style={{
+                borderBottom: includeBottomBorder && "1pt solid black",
+                borderRight: includeRightBorder && "1pt solid black",
+                borderLeft: includeLeftBorder && "1pt solid black",
+                borderTop: includeTopBorder && "1pt solid black",
+                width: "100%",
+                display: "flex",
+                flexDirection: "row",
                 // @ts-ignore
-                style={{
-                    borderBottom: includeBottomBorder && "1pt solid black",
-                    borderRight: includeRightBorder && "1pt solid black",
-                    borderLeft: includeLeftBorder && "1pt solid black",
-                    borderTop: includeTopBorder && "1pt solid black",
-                    width: "100%",
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "stretch"
+                justifyContent: "stretch"
                 }}
             >
                 {

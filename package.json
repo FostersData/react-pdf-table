@@ -7,7 +7,6 @@
     "generate-barrels": "barrelsby -d src --delete -e TableRow.tsx",
     "build": "rm -rf ./lib/* && npm run generate-barrels && tsc && npm run build-storybook && npm run build-doco",
     "recompile": "tsc",
-    "prepublish": "npm run build",
     "prepare": "npm run generate-barrels && tsc",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o docs",
