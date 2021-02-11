@@ -8,6 +8,7 @@
     "build": "rm -rf ./lib/* && npm run generate-barrels && tsc && npm run build-storybook && npm run build-doco",
     "recompile": "tsc",
     "prepublish": "npm run build",
+    "prepare": "npm run generate-barrels && tsc",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook -o docs",
     "build-doco": "typedoc --plugin typedoc-plugin-markdown --out docs/typedoc --mode modules src"
