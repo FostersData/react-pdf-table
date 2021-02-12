@@ -2,6 +2,8 @@ tmp-*.tgz
 
 tests/src
 tests/tests
+lib/
+docs/
 
 # Logs
 logs
