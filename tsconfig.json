@@ -4,11 +4,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
-    "lib": [
-      "es6",
-      "dom",
-      "es7"
-    ],
+    "lib": ["es6", "dom", "es7"],
     "module": "commonjs",
     "sourceMap": true,
     "jsx": "react",
@@ -19,10 +15,7 @@
     "rootDirs": ["src", "stories"],
     "baseUrl": "src"
   },
-  "include": [
-    "./src/**/*.tsx",
-    "./src/**/*.ts"
-  ],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"],
   "exclude": [
     "./node_modules/**/*",
     "./src/**/*.spec.tsx",

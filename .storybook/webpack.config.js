@@ -11,26 +11,26 @@ module.exports = ({ config }) => {
     test: /\.(ts|tsx)$/,
     use: [
       {
-        loader: require.resolve('ts-loader'),
+        loader: require.resolve("ts-loader")
       },
       // Optional
       {
-        loader: require.resolve('react-docgen-typescript-loader'),
-      },
-    ],
-  });
+        loader: require.resolve("react-docgen-typescript-loader")
+      }
+    ]
+  })
 
   config.module.rules.push({
     test: /\.stories\.jsx?$/,
     loaders: [
       {
-        loader: require.resolve('@storybook/addon-storysource/loader'),
-        options: { parser: 'typescript' },
+        loader: require.resolve("@storybook/addon-storysource/loader"),
+        options: { parser: "typescript" }
       }
     ],
-    enforce: 'pre',
-  });
+    enforce: "pre"
+  })
 
-  config.resolve.extensions.push('.ts', '.tsx');
-  return config;
-};
+  config.resolve.extensions.push(".ts", ".tsx")
+  return config
+}

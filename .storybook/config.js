@@ -1,10 +1,10 @@
-import { addParameters, configure } from '@storybook/react';
+import { addParameters, configure } from "@storybook/react"
 
 // Option defaults:
 addParameters({
   options: {
-    name: 'Storybook',
-    url: '#',
+    name: "Storybook",
+    url: "#",
     goFullScreen: false,
     showStoriesPanel: true,
     showAddonPanel: true,
@@ -13,13 +13,13 @@ addParameters({
     hierarchySeparator: null,
     hierarchyRootSeparator: null,
     sidebarAnimations: true
-  },
-});
+  }
+})
 
 // automatically import all files ending in *.stories.js
-const req = require.context('../stories', true, /\.stories\.js$/);
+const req = require.context("../stories", true, /\.stories\.js$/)
 function loadStories() {
-  req.keys().forEach(filename => req(filename));
+  req.keys().forEach(filename => req(filename))
 }
 
-configure(loadStories, module);
+configure(loadStories, module)
