@@ -1,5 +1,5 @@
 import * as React from "react"
-import { StyleSheet } from "@react-pdf/renderer"
+import { StyleSheet, View, Text } from "@react-pdf/renderer"
 import {
   DataTableCell,
   Table,
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 
 export class Styled extends React.Component<{}, SimpleTableHeaderState> {
   state = {
-    data: generateRandomData(20)
+    data: generateRandomData(40)
   }
 
   render() {

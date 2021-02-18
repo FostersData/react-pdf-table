@@ -67,10 +67,15 @@ export class TableRow extends React.PureComponent<Partial<TableBodyProps>> {
             display: "flex",
             flexDirection: "row",
             // @ts-ignore
-            justifyContent: "stretch"
+            justifyContent: "stretch",
+            // top border is there, but we move each row up 1pt so it overlaps with the previous row's bottom border and doesn't visually double up
+            // necessary for when a row is the first on a new page
+            // note that "-1pt" is broken per https://github.com/diegomura/react-pdf/issues/760
+            marginTop: -1
           },
           style
         ]}
+        wrap={false}
       >
         {rowCells.map((rc, columnIndex) =>
           React.cloneElement(rc, {

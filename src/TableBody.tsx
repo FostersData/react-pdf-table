@@ -28,7 +28,6 @@ export class TableBody extends React.PureComponent<TableBodyProps> {
         key={rowIndex}
         data={data}
         {...includeBorders}
-        includeTopBorder={false}
         style={rowStyle}
       >
         {rowCells}
