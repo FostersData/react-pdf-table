@@ -65,7 +65,9 @@ export class TableCell extends React.PureComponent<TableCellProps> {
   render() {
     // center numbers, right-align currency, left-align normal text
     const content =
-      typeof this.props.children === "number" ? (
+      this.props.children === undefined ? (
+        <Text />
+      ) : typeof this.props.children === "number" ? (
         <Text style={{ textAlign: "center" }}>
           {String(this.props.children)}
         </Text>
