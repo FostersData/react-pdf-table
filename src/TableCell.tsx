@@ -63,13 +63,16 @@ export interface TableCellProps extends TableBorder {
  */
 export class TableCell extends React.PureComponent<TableCellProps> {
   render() {
+    // center numbers, right-align currency, left-align normal text
     const content =
-      typeof this.props.children === "string" ? (
-        <Text>{this.props.children}</Text>
-      ) : typeof this.props.children === "number" ? (
-        <Text>{this.props.children.toString()}</Text>
+      typeof this.props.children === "number" ? (
+        <Text style={{ textAlign: "center" }}>
+          {String(this.props.children)}
+        </Text>
       ) : (
-        this.props.children
+        <Text style={this.props.children[0] === "$" && { textAlign: "right" }}>
+          {this.props.children}
+        </Text>
       )
 
     const { includeRightBorder } = getDefaultBorderIncludes(this.props)
