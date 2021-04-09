@@ -1,6 +1,6 @@
 import * as React from "react"
 import ReactPDF, { Text, View } from "@react-pdf/renderer"
-import { getDefaultBorderIncludes, transformToArray } from "./Utils"
+import { getDefaultBorderIncludes } from "./Utils"
 
 /**
  * Whether to include borders or not.
@@ -33,7 +33,9 @@ export interface TableCellProps extends TableBorder {
    * The weighting of a cell based on the flex layout style.
    * This value is between 0..1, if not specified 1 is assumed, this will take up the remaining available space.
    */
-  weighting?: number
+  flex?: number
+
+  width?: number
 
   /**
    * Extra styling to apply. These will override existing style with the same key.
@@ -72,7 +74,8 @@ export class TableCell extends React.PureComponent<TableCellProps> {
 
     const { includeRightBorder } = getDefaultBorderIncludes(this.props)
     const defaultStyle: ReactPDF.Style = {
-      flex: this.props.weighting ?? 1,
+      flex: this.props.width ? 0 : this.props.flex ?? 1,
+      width: this.props.width,
       // @ts-ignore
       justifyContent: "stretch",
       textAlign: this.props.textAlign ?? "left",
@@ -82,13 +85,14 @@ export class TableCell extends React.PureComponent<TableCellProps> {
       whiteSpace: "pre-wrap"
     }
 
-    const mergedStyles: ReactPDF.Style[] = [
-      defaultStyle,
-      ...transformToArray(this.props.style)
-    ]
-
     return (
-      <View style={mergedStyles} wrap={true}>
+      <View
+        style={{
+          ...defaultStyle,
+          ...this.props.style
+        }}
+        wrap={true}
+      >
         {content}
       </View>
     )

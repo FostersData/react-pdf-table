@@ -1,6 +1,5 @@
 import * as React from "react"
-import { TableBorder, TableCell } from "./TableCell"
-import { DataTableCell } from "./DataTableCell"
+import { TableBorder } from "./TableCell"
 import ReactPDF, { View } from "@react-pdf/renderer"
 import { getDefaultBorderIncludes } from "./Utils"
 import { TableBodyProps } from "./TableBody"
@@ -40,20 +39,7 @@ export class TableRow extends React.PureComponent<Partial<TableBodyProps>> {
       includeTopBorder
     } = getDefaultBorderIncludes(this.props)
 
-    let remainingWeighting = 1
-    let numberOfWeightingsDefined = 0
-    rowCells.forEach((i: TableCell | DataTableCell) => {
-      if (i.props.weighting !== undefined) {
-        remainingWeighting -= i.props.weighting
-        numberOfWeightingsDefined++
-      }
-    })
-
     const style = this.props.style || {}
-
-    const weightingsPerNotSpecified = Math.ceil(
-      remainingWeighting / (rowCells.length - numberOfWeightingsDefined)
-    )
 
     return (
       <View
@@ -79,7 +65,6 @@ export class TableRow extends React.PureComponent<Partial<TableBodyProps>> {
       >
         {rowCells.map((rc, columnIndex) =>
           React.cloneElement(rc, {
-            weighting: rc.props.weighting ?? weightingsPerNotSpecified,
             data: this.props.data,
             key: columnIndex,
             fontSize: this.props.fontSize,
