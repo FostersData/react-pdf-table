@@ -63,16 +63,29 @@ export interface TableCellProps extends TableBorder {
  */
 export class TableCell extends React.PureComponent<TableCellProps> {
   render() {
+    const overrideAlignment = this.props.textAlign
     // center numbers, right-align currency, left-align normal text
     const content =
       this.props.children === undefined ? (
         <Text />
       ) : typeof this.props.children === "number" ? (
-        <Text style={{ textAlign: "center" }}>
+        <Text style={{ textAlign: overrideAlignment || "center" }}>
+          {String(this.props.children)}
+        </Text>
+      ) : typeof this.props.children !== "string" ? (
+        <Text style={{ textAlign: overrideAlignment }}>
           {String(this.props.children)}
         </Text>
       ) : (
-        <Text style={this.props.children[0] === "$" && { textAlign: "right" }}>
+        <Text
+          style={{
+            textAlign: overrideAlignment,
+            ...// right-align both positive and negative currency strings
+            (this.props.children.slice(0, 2).includes("$") && {
+              textAlign: "right"
+            })
+          }}
+        >
           {this.props.children}
         </Text>
       )
@@ -83,7 +96,6 @@ export class TableCell extends React.PureComponent<TableCellProps> {
       width: this.props.width,
       // @ts-ignore
       justifyContent: "stretch",
-      textAlign: this.props.textAlign ?? "left",
       fontSize: this.props.fontSize ?? (this.props.isHeader === true ? 14 : 12),
       borderRight: includeRightBorder && "1pt solid black",
       wordWrap: "break-word",

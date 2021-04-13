@@ -32,14 +32,19 @@ export class Styled extends React.Component<{}, SimpleTableHeaderState> {
             <TableCell style={styles.tableHeading}>Last Name</TableCell>
             <TableCell style={styles.tableHeading}>DOB</TableCell>
             <TableCell style={styles.tableHeading}>Country</TableCell>
-            <TableCell style={styles.tableHeading}>Phone Number</TableCell>
+            <TableCell style={styles.tableHeading} textAlign={"right"}>
+              Phone Number
+            </TableCell>
           </TableHeader>
           <TableBody>
             <DataTableCell getContent={r => r.firstName} />
             <DataTableCell getContent={r => r.lastName} />
             <DataTableCell getContent={r => r.dob.toLocaleString()} />
             <DataTableCell getContent={r => r.country} />
-            <DataTableCell getContent={r => r.phoneNumber} />
+            <DataTableCell
+              getContent={r => r.phoneNumber}
+              textAlign={"right"}
+            />
           </TableBody>
         </Table>
       </PdfContainer>

@@ -68,7 +68,6 @@ export class TableRow extends React.PureComponent<Partial<TableBodyProps>> {
             data: this.props.data,
             key: columnIndex,
             fontSize: this.props.fontSize,
-            textAlign: this.props.textAlign,
             includeLeftBorder: columnIndex === 0,
             includeRightBorder: columnIndex !== rowCells.length - 1,
             style: { ...rc.props.style, ...style }

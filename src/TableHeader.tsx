@@ -19,7 +19,6 @@ export class TableHeader extends React.PureComponent<TableHeaderProps> {
             key: columnIndex,
             isHeader: true,
             fontSize: this.props.fontSize,
-            textAlign: this.props.textAlign,
             includeLeftBorder: columnIndex === 0,
             includeRightBorder: columnIndex !== rowCells.length - 1
           })
