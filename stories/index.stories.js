@@ -9,6 +9,7 @@ import { SimpleTable } from "./components/story/SimpleTable"
 import { Styled } from "./components/story/Styled"
 import { Widths } from "./components/story/Widths"
 import { NestedTables } from "./components/story/NestedTables"
+import { IsolatedRows } from "./components/story/IsolatedRows"
 
 storiesOf("Welcome", module).add("to react-pdf-table", () => <Introduction />)
 
@@ -19,3 +20,4 @@ tableStories.add("Simple", () => <SimpleTable />)
 tableStories.add("Styled", () => <Styled />)
 tableStories.add("Widths", () => <Widths />)
 tableStories.add("Nested Tables", () => <NestedTables />)
+tableStories.add("Isolated rows", () => <IsolatedRows />)

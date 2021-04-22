@@ -62,6 +62,8 @@ export class TableRow extends React.PureComponent<Partial<TableBodyProps>> {
           style
         ]}
         wrap={false}
+        // avoid a single row at the start of a page
+        minPresenceAhead={50}
       >
         {rowCells.map((rc, columnIndex) =>
           React.cloneElement(rc, {
